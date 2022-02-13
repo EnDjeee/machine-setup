@@ -3,7 +3,7 @@ echo "################Creating some useful directories.."
 mkdir ~/bin ~/dev ~/docs ~/work ~/tmp
 mkdir ~/dev/demo ~/dev/miscellaneous ~/dev/projects ~/dev/tests
 sudo apt update
-echo "################Installing useful tools"
+echo "################Installing useful tools.."
 sudo apt install ffmpeg
 sudo apt install openvpn
 sudo apt install colordiff
@@ -36,7 +36,7 @@ sudo apt install maven
 echo "################Installing intellij-idea.."
 sudo apt install snapd
 sudo snap install intellij-idea-community --classic
-echo "################Installing go"
+echo "################Installing go.."
 sudo snap install go --classic
 echo "################Installing visual studio code.."
 sudo snap install code --classic
