@@ -17,6 +17,7 @@ sudo apt install neofetch
 sudo apt install ncdu
 sudo apt install wget
 sudo apt install fd-find
+sudo apt install virt-manager
 echo "################Installing some useless but needed tools.."
 sudo apt install sl
 sudo apt install cowsay
