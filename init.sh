@@ -73,6 +73,8 @@ echo "################Installing gimp.."
 sudo snap install gimp --classic
 echo "################Installing vlc.."
 sudo snap install vlc --classic
+echo "################Installing deja-dup.."
+sudo snap install deja-dup --classic
 echo "################Creating useful aliases.."
 echo "# custom aliases" >> ~/.bashrc
 echo "alias dev='cd ~/dev'" >> ~/.bashrc
