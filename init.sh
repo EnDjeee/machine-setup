@@ -18,6 +18,7 @@ sudo apt install ncdu
 sudo apt install wget
 sudo apt install fd-find
 sudo apt install virt-manager
+sudo apt install deluge
 echo "################Installing some useless but needed tools.."
 sudo apt install sl
 sudo apt install cowsay
@@ -75,6 +76,11 @@ echo "################Installing vlc.."
 sudo snap install vlc --classic
 echo "################Installing deja-dup.."
 sudo snap install deja-dup --classic
+echo "################Installing obsidian.."
+./download-obsidian-latest-snap-release.sh
+OBSIDIAN_SNAP_FILENAME=$(ls ~/bin/ | grep -oP "obsidian(.*)")
+SNAP_FILE_PATH="/home/matteo/bin/${OBSIDIAN_SNAP_FILENAME}"
+sudo snap install --dangerous $SNAP_FILE_PATH
 echo "################Creating useful aliases.."
 echo "# custom aliases" >> ~/.bashrc
 echo "alias dev='cd ~/dev'" >> ~/.bashrc
@@ -87,5 +93,6 @@ echo "################Including snap in PATH.."
 echo "# include snapd in PATH" >> ~/.bashrc
 echo "PATH=$PATH:/snap/bin" >> ~/.bashrc
 source ~/.bashrc
+
 
                                              
