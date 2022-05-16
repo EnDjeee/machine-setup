@@ -76,6 +76,8 @@ echo "################Installing vlc.."
 sudo snap install vlc --classic
 echo "################Installing deja-dup.."
 sudo snap install deja-dup --classic
+echo "################Installing remmina.."
+sudo snap install remmina --classic
 echo "################Installing obsidian.."
 ./download-obsidian-latest-snap-release.sh
 OBSIDIAN_SNAP_FILENAME=$(ls ~/bin/ | grep -oP "obsidian(.*)")
