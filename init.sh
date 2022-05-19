@@ -13,6 +13,7 @@ sudo apt install rdesktop
 sudo apt install vim
 sudo apt install gzip
 sudo apt install mtr
+sudo apt install iperf3
 sudo apt install neofetch
 sudo apt install ncdu
 sudo apt install wget
