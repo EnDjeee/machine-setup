@@ -4,12 +4,12 @@ mkdir ~/bin ~/dev ~/docs ~/work ~/tmp
 mkdir ~/dev/demo ~/dev/miscellaneous ~/dev/projects ~/dev/tests
 sudo apt update
 echo "################Installing useful tools.."
+sudo apt install net-tools
 sudo apt install ffmpeg
 sudo apt install openvpn
 sudo apt install colordiff
 sudo apt install tree
 sudo apt install unzip
-sudo apt install rdesktop
 sudo apt install vim
 sudo apt install gzip
 sudo apt install mtr
@@ -28,19 +28,13 @@ sudo apt install texlive-latex-extra
 sudo apt install texlive-extra-utils
 echo "################Installing git.."
 sudo apt install git
+echo "################Installing go.."
+sudo ./download-and-install-golang.sh
 echo "################Installing tldr.."
 sudo apt install nodejs npm
 sudo npm install -g tldr
 tldr --update
-echo "################Installing java.."
-sudo apt install default-jdk
-echo "################Installing maven.."
-sudo apt install maven
-echo "################Installing intellij-idea.."
 sudo apt install snapd
-sudo snap install intellij-idea-community --classic
-echo "################Installing go.."
-sudo snap install go --classic
 echo "################Installing visual studio code.."
 sudo snap install code --classic
 echo "###############Installing sublime text.."
