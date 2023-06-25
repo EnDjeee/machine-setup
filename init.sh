@@ -35,6 +35,7 @@ sudo apt install nodejs npm
 sudo npm install -g tldr
 tldr --update
 sudo apt install snapd
+sudo snap refresh
 echo "################Installing visual studio code.."
 sudo snap install code --classic
 echo "###############Installing sublime text.."
@@ -73,11 +74,6 @@ echo "################Installing deja-dup.."
 sudo snap install deja-dup --classic
 echo "################Installing remmina.."
 sudo snap install remmina --classic
-echo "################Installing obsidian.."
-./download-obsidian-latest-snap-release.sh
-OBSIDIAN_SNAP_FILENAME=$(ls ~/bin/ | grep -oP "obsidian(.*)")
-SNAP_FILE_PATH="/home/matteo/bin/${OBSIDIAN_SNAP_FILENAME}"
-sudo snap install --dangerous $SNAP_FILE_PATH
 echo "################Creating useful aliases.."
 echo "# custom aliases" >> ~/.bashrc
 echo "alias dev='cd ~/dev'" >> ~/.bashrc
