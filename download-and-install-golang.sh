@@ -1,6 +1,8 @@
 #!/bin/bash
 
-GO_LATEST_STABLE_VERSION=$(curl https://go.dev/VERSION?m=text)
+set -x 
+
+GO_LATEST_STABLE_VERSION=$(curl https://go.dev/VERSION?m=text | head -n1 )
 
 #Download the latest go version
 wget --directory-prefix /tmp https://go.dev/dl/$GO_LATEST_STABLE_VERSION.linux-amd64.tar.gz
