@@ -58,6 +58,8 @@ echo "${GREEN}################Installing postman..${NORMAL}"
 sudo -i flatpak install -y flathub com.getpostman.Postman
 echo "${GREEN}################Installing firefox..${NORMAL}"
 sudo -i flatpak install -y flathub org.mozilla.firefox
+echo "${GREEN}################Installing chrome..${NORMAL}"
+sudo -i flatpak install -y flathub com.google.Chrome
 echo "${GREEN}################Installing spotify..${NORMAL}"
 sudo -i flatpak install -y flathub com.spotify.Client
 echo "${GREEN}################Installing skype..${NORMAL}"

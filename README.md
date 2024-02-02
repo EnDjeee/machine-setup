@@ -3,6 +3,6 @@
 1. ```chmod +x init.sh```
 2. ```./init.sh```
 
-## Comfortable swipe
+## Comfortable swipe (Optional)
 
-Please, remember to install comfortable swipe: https://github.com/Hikari9/comfortable-swipe
+https://github.com/Hikari9/comfortable-swipe
