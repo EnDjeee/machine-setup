@@ -15,6 +15,7 @@ mkdir -p ~/bin ~/dev ~/docs ~/work ~/tmp
 mkdir -p ~/dev/demo ~/dev/miscellaneous ~/dev/projects ~/dev/tests
 echo "${GREEN}################Installing useful tools..}${NORMAL}"
 sudo -i apt install -y net-tools
+sudo -i apt install -y bind9-dnsutils
 sudo -i apt install -y nmap
 sudo -i apt install -y ffmpeg
 sudo -i apt install -y openvpn
@@ -33,6 +34,7 @@ sudo -i apt install -y fd-find
 sudo -i apt install -y virt-manager
 sudo -i apt install -y deluge
 sudo -i apt install -y python3-pip
+sudo -i apt install python*-venv
 sudo -i pip install --upgrade pip 
 echo "${GREEN}################Installing some useless but needed tools..${NORMAL}"
 sudo -i apt install sl
@@ -56,10 +58,10 @@ echo "${GREEN}###############Installing sublime text..${NORMAL}"
 sudo -i flatpak install -y flathub com.sublimetext.three
 echo "${GREEN}################Installing postman..${NORMAL}"
 sudo -i flatpak install -y flathub com.getpostman.Postman
-echo "${GREEN}################Installing firefox..${NORMAL}"
-sudo -i flatpak install -y flathub org.mozilla.firefox
-echo "${GREEN}################Installing chrome..${NORMAL}"
-sudo -i flatpak install -y flathub com.google.Chrome
+#echo "${GREEN}################Installing firefox..${NORMAL}"
+#sudo -i flatpak install -y flathub org.mozilla.firefox
+#echo "${GREEN}################Installing chrome..${NORMAL}"
+#sudo -i flatpak install -y flathub com.google.Chrome
 echo "${GREEN}################Installing spotify..${NORMAL}"
 sudo -i flatpak install -y flathub com.spotify.Client
 echo "${GREEN}################Installing skype..${NORMAL}"
