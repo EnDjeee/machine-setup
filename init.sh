@@ -84,6 +84,8 @@ echo "${GREEN}################Installing kubectl..${NORMAL}"
 curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
 sudo -i install -o root -g root -m 0755 $PWD/kubectl /usr/local/bin/kubectl
 rm -f $PWD/kubectl
+echo "${GREEN}################Installing kustomize..${NORMAL}"
+cd /usr/local/bin; sudo -i curl -s "https://raw.githubusercontent.com/kubernetes-sigs/kustomize/master/hack/install_kustomize.sh" | sudo -i bash; cd -
 echo "${GREEN}################Installing helm..${NORMAL}"
 curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
 echo "${GREEN}################Installing go..${NORMAL}"
