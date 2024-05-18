@@ -34,21 +34,29 @@ sudo -i apt install -y fd-find
 sudo -i apt install -y virt-manager
 sudo -i apt install -y deluge
 sudo -i apt install -y python3-pip
-sudo -i apt install python*-venv
+sudo -i apt install -y python*-venv
 sudo -i pip install --upgrade pip 
 echo "${GREEN}################Installing some useless but needed tools..${NORMAL}"
-sudo -i apt install sl
-sudo -i apt install cowsay
+sudo -i apt install -y sl
+sudo -i apt install -y cowsay
 echo "${GREEN}################Installing latex..${NORMAL}"
-sudo -i apt install texlive-latex-extra
-sudo -i apt install texlive-extra-utils
+sudo -i apt install -y texlive-latex-extra
+sudo -i apt install -y texlive-extra-utils
 echo "${GREEN}################Installing git..${NORMAL}"
-sudo -i apt install git
+sudo -i apt install -y git
 echo "${GREEN}################Installing hugo..${NORMAL}"
-sudo -i apt install hugo
+sudo -i apt install -y hugo
 echo "${GREEN}################Installing tldr..${NORMAL}"
 sudo -i pip3 install tldr
 tldr --update
+echo "${GREEN}################Installing ansible..${NORMAL}"
+sudo -i apt install -y software-properties-common
+sudo -i add-apt-repository -y --update ppa:ansible/ansible
+sudo -i apt install -y ansible
+echo "${GREEN}################Installing terraform..${NORMAL}"
+sudo -i apt install -y software-properties-common
+sudo -i add-apt-repository -y --update ppa:ansible/ansible
+sudo -i apt install -y ansible
 echo "${GREEN}################Installing flatpak..${NORMAL}"
 sudo -i apt install flatpak
 sudo -i flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
@@ -94,6 +102,11 @@ echo "${GREEN}################Installing docker..${NORMAL}"
 curl -fsSL https://get.docker.com -o $PWD/get-docker.sh
 sudo -i bash $PWD/get-docker.sh
 rm -f $PWD/get-docker.sh
+echo "${GREEN}################Installing terraform..${NORMAL}"
+curl -LO https://raw.github.com/robertpeteuil/hashicorp-installer/master/hci
+chmod +x hci
+sudo -i $PWD/hci -p terraform -a
+rm -f $PWD/hci
 echo "${GREEN}################Creating useful aliases..${NORMAL}"
 echo "# custom aliases" >> ~/.bashrc
 echo "alias dev='cd ~/dev'" >> ~/.bashrc
