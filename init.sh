@@ -107,12 +107,26 @@ curl -LO https://raw.github.com/robertpeteuil/hashicorp-installer/master/hci
 chmod +x hci
 sudo -i $PWD/hci -p terraform -a
 rm -f $PWD/hci
-echo "${GREEN}################Creating useful aliases..${NORMAL}"
+echo "${GREEN}################Installing tmux..${NORMAL}"
+wget https://github.com/tmux/tmux/releases/download/3.4/tmux-3.4.tar.gz
+tar -zxf $PWD/tmux-*.tar.gz
+cd $PWD/tmux-*/
+./configure
+make && sudo make install
+cd .. && rm -rf $PWD/tmux-*
+cp $PWD/tmux.conf ~/.tmux.conf
+echo "${GREEN}################Creating useful aliases in bashrc..${NORMAL}"
 echo "# custom aliases" >> ~/.bashrc
 echo "alias dev='cd ~/dev'" >> ~/.bashrc
 echo "alias work='cd ~/work'" >> ~/.bashrc
 echo "alias home='cd ~'" >> ~/.bashrc
 echo "alias root='cd /'" >> ~/.bashrc
 echo "alias fd='fdfind'" >> ~/.bashrc
+echo "${GREEN}################Force color prompt in bashrc..${NORMAL}"
+sed -i 's/#force_color_prompt=yes/force_color_prompt=yes/g' ~/.bashrc
+echo "${GREEN}################Fix vim color palette when using tmux..${NORMAL}"
+echo "set background=dark" >> /etc/vim/vimrc
+echo "set t_Co=256" >> /etc/vim/vimrc
+
 source ~/.bashrc
 
