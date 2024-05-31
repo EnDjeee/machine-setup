@@ -114,7 +114,7 @@ cd $PWD/tmux-*/
 ./configure
 make && sudo make install
 cd .. && rm -rf $PWD/tmux-*
-cp $PWD/tmux.conf ~/.tmux.conf
+cp $PWD/conf/tmux.conf ~/.tmux.conf
 echo "${GREEN}################Creating useful aliases in bashrc..${NORMAL}"
 echo "# custom aliases" >> ~/.bashrc
 echo "alias dev='cd ~/dev'" >> ~/.bashrc
