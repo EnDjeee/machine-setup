@@ -33,7 +33,7 @@ sudo -i apt install -y wget
 sudo -i apt install -y fd-find
 sudo -i apt install -y virt-manager
 sudo -i apt install -y deluge
-sudo -i apt install -y python3-pip
+sudo -i apt install -y python*-pip
 sudo -i apt install -y python*-venv
 sudo -i pip install --upgrade pip 
 echo "${GREEN}################Installing some useless but needed tools..${NORMAL}"
@@ -47,7 +47,7 @@ sudo -i apt install -y git
 echo "${GREEN}################Installing hugo..${NORMAL}"
 sudo -i apt install -y hugo
 echo "${GREEN}################Installing tldr..${NORMAL}"
-sudo -i pip3 install tldr
+sudo -i pip install tldr
 tldr --update
 echo "${GREEN}################Installing ansible..${NORMAL}"
 sudo -i apt install -y software-properties-common
@@ -115,18 +115,8 @@ cd $PWD/tmux-*/
 make && sudo make install
 cd .. && rm -rf $PWD/tmux-*
 cp $PWD/conf/tmux.conf ~/.tmux.conf
-echo "${GREEN}################Creating useful aliases in bashrc..${NORMAL}"
-echo "# custom aliases" >> ~/.bashrc
-echo "alias dev='cd ~/dev'" >> ~/.bashrc
-echo "alias work='cd ~/work'" >> ~/.bashrc
-echo "alias home='cd ~'" >> ~/.bashrc
-echo "alias root='cd /'" >> ~/.bashrc
-echo "alias fd='fdfind'" >> ~/.bashrc
-echo "${GREEN}################Force color prompt in bashrc..${NORMAL}"
-sed -i 's/#force_color_prompt=yes/force_color_prompt=yes/g' ~/.bashrc
-echo "${GREEN}################Fix vim color palette when using tmux..${NORMAL}"
-echo "set background=dark" >> /etc/vim/vimrc
-echo "set t_Co=256" >> /etc/vim/vimrc
+echo "${GREEN}################Creating bashrc..${NORMAL}"
+cp $PWD/conf/bashrc ~/.bashrc
 
 source ~/.bashrc
 
