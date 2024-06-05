@@ -1,0 +1,58 @@
+---
+
+apt_packages:
+  - sudo
+  - wget
+  - curl
+  - git
+  - apt-transport-https
+  - dnsutils
+  - net-tools
+  - bind9-dnsutils
+  - nmap
+  - btop
+  - iotop
+  - vim
+  - zip
+  - unzip
+  - screen
+  - nfs-common
+  - iperf3
+  - python3-pip
+  - python3-venv
+  - mlocate
+  - mtr
+  - tree
+  - rsync
+  - acl
+  - tcpdump
+  - ffmpeg
+  - neofetch
+  - fd-find
+  - virt-manager
+  - deluge
+  - cowsay
+  - sl
+  - texlive-latex-extra
+  - texlive-extra-utils
+  - hugo
+  - software-properties-common
+  - flatpak
+
+flatpak_packages:
+  - com.visualstudio.code
+  - com.sublimetext.three
+  - com.getpostman.Postman
+  - com.spotify.Client
+  - com.skype.Client
+  - com.discordapp.Discord
+  - com.slack.Slack
+  - org.keepassxc.KeePassXC
+  - org.gimp.GIMP
+  - org.videolan.VLC
+  - org.gnome.DejaDup
+  - org.remmina.Remmina
+
+pip_packages:
+  - ansible
+  - tldr

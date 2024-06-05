@@ -1,0 +1,17 @@
+---
+#
+# For more settings view:
+# https://github.com/geerlingguy/ansible-role-docker/blob/master/defaults/main.yml
+#
+
+# A list of users who will be added to the docker group.
+docker_users: []
+
+# Docker daemon options as a dict
+docker_daemon_options:
+  log-driver: "json-file"
+  log-opts:
+    max-size: "10m"
+    max-file: "3"
+
+docker_install_compose_plugin: True

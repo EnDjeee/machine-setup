@@ -1,0 +1,6 @@
+*.bak
+.vagrant
+.vault.pwd
+*.retry
+venv/
+/.ansible/

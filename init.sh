@@ -10,6 +10,9 @@ else
     exit 1
 fi
 set -x
+echo "${GREEN}################Adding custom config to the profile.d folder..${NORMAL}"
+cp $PWD/conf/custom-configs.sh /etc/profile.d/custom-configs.sh
+source ~/.bashrc
 echo "${GREEN}################Creating some useful directories..${NORMAL}"
 mkdir -p ~/bin ~/dev ~/docs ~/work ~/tmp
 mkdir -p ~/dev/demo ~/dev/miscellaneous ~/dev/projects ~/dev/tests
@@ -33,6 +36,20 @@ sudo -i apt install -y wget
 sudo -i apt install -y fd-find
 sudo -i apt install -y virt-manager
 sudo -i apt install -y deluge
+sudo -i apt install -y curl
+sudo -i apt install -y git
+sudo -i apt install -y apt-transport-https
+sudo -i apt install -y dns-utils
+sudo -i apt install -y bind9-dnsutils
+sudo -i apt install -y iotop
+sudo -i apt install -y zip
+sudo -i apt install -y screen
+sudo -i apt install -y nfs-common
+sudo -i apt install -y mlocate
+sudo -i apt install -y mtr
+sudo -i apt install -y rsync
+sudo -i apt install -y tcdump
+sudo -i apt install -y acl
 sudo -i apt install -y python*-pip
 sudo -i apt install -y python*-venv
 sudo -i pip install --upgrade pip 
@@ -49,14 +66,10 @@ sudo -i apt install -y hugo
 echo "${GREEN}################Installing tldr..${NORMAL}"
 sudo -i pip install tldr
 tldr --update
-echo "${GREEN}################Installing ansible..${NORMAL}"
-sudo -i apt install -y software-properties-common
-sudo -i add-apt-repository -y --update ppa:ansible/ansible
-sudo -i apt install -y ansible
-echo "${GREEN}################Installing terraform..${NORMAL}"
-sudo -i apt install -y software-properties-common
-sudo -i add-apt-repository -y --update ppa:ansible/ansible
-sudo -i apt install -y ansible
+#echo "${GREEN}################Installing ansible..${NORMAL}"
+#sudo -i apt install -y software-properties-common
+#sudo -i add-apt-repository -y --update ppa:ansible/ansible
+#sudo -i apt install -y ansible
 echo "${GREEN}################Installing flatpak..${NORMAL}"
 sudo -i apt install flatpak
 sudo -i flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
@@ -115,8 +128,4 @@ cd $PWD/tmux-*/
 make && sudo make install
 cd .. && rm -rf $PWD/tmux-*
 cp $PWD/conf/tmux.conf ~/.tmux.conf
-echo "${GREEN}################Creating bashrc..${NORMAL}"
-cp $PWD/conf/bashrc ~/.bashrc
-
-source ~/.bashrc
 

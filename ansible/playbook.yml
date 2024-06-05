@@ -1,0 +1,122 @@
+---
+- name: Setup machine
+  hosts: all
+  vars:
+    host_user: "{{ lookup('env','USER') }}"
+  become: yes
+  pre_tasks:
+    - name: Update apt cache
+      apt:
+        update_cache: true
+  roles:
+    - geerlingguy.docker
+  tasks:
+    - name: Install apt packages
+      apt:
+        name: "{{ apt_packages }}"
+        state: present
+        update_cache: true
+    - name: Add the flathub flatpak repository to the system installation
+      flatpak_remote:
+        name: flathub
+        state: present
+        flatpakrepo_url: https://flathub.org/repo/flathub.flatpakrepo
+    - name: Install flatpak packages
+      flatpak:
+        name: "{{ flatpak_packages }}"
+        state: present
+    - name: Install pip packages
+      pip:
+        name: "{{ pip_packages }}"
+        state: present
+    - name: Check if host user exists
+      getent:
+        database: passwd
+        key: "{{ host_user }}"
+        fail_key: false
+    - name: Create useful directories
+      vars:
+        user: "{{ host_user if getent_passwd[host_user] else 'root' }}"
+        path: "{{ '/home/' if getent_passwd[host_user] else '/' }}"
+      file:
+        path: "{{ item }}"
+        state: directory
+        owner: "{{ user }}"
+        group: "{{ user }}"
+        mode: 0775
+      loop:
+        - "{{ path }}{{ user }}/dev"
+        - "{{ path }}{{ user }}/bin"
+        - "{{ path }}{{ user }}/docs"
+        - "{{ path }}{{ user }}/work"
+        - "{{ path }}{{ user }}/tmp"
+        - "{{ path }}{{ user }}/dev/demo"
+        - "{{ path }}{{ user }}/dev/miscellaneous"
+        - "{{ path }}{{ user }}/dev/projects"
+        - "{{ path }}{{ user }}/dev/tests"
+    - name: Add custom shell config in profile.d
+      copy:
+        src: profile/custom_configs.sh
+        dest: /etc/profile.d/custom_configs.sh
+        owner: root
+        group: root
+        mode: '0644'
+    - name: Update tldr entries database
+      command: tldr --update
+    - name: Install the latest golang version
+      shell: |
+        GO_LATEST_STABLE_VERSION=$(curl https://go.dev/VERSION?m=text | head -n1 )
+        #Download the latest go version
+        wget --directory-prefix /tmp https://go.dev/dl/$GO_LATEST_STABLE_VERSION.linux-amd64.tar.gz
+        #Remove previous go installations and install the latest one
+        rm -rf /usr/local/go && tar -C /usr/local -xzf /tmp/$GO_LATEST_STABLE_VERSION.linux-amd64.tar.gz
+        #Delete the tar.gz file
+        rm -rf /tmp/$GO_LATEST_STABLE_VERSION.linux-amd64.tar.*
+    - name: Install the latest kubectl version
+      shell: |
+        curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+        install -o root -g root -m 0755 $PWD/kubectl /usr/local/bin/kubectl
+    - name: Install the latest kustomize version
+      shell: |
+        cd /usr/local/bin; curl -s "https://raw.githubusercontent.com/kubernetes-sigs/kustomize/master/hack/install_kustomize.sh" | bash; cd -
+    - name: Install the latest helm version
+      shell: |
+        curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
+    - name: Install the latest terraform version
+      shell: |
+        curl -LO https://raw.github.com/robertpeteuil/hashicorp-installer/master/hci
+        chmod +x hci
+        $PWD/hci -p terraform -a
+        rm -f $PWD/hci
+    - name: Install tmux
+      shell: |
+        wget https://github.com/tmux/tmux/releases/download/3.4/tmux-3.4.tar.gz
+        tar -zxf $PWD/tmux-*.tar.gz
+        cd $PWD/tmux-*/
+        ./configure
+        make && make install
+        cd .. && rm -rf $PWD/tmux-*
+    - name: Configure tmux
+      vars:
+        user: "{{ host_user if getent_passwd[host_user] else 'root' }}"
+        path: "{{ '/home/' if getent_passwd[host_user] else '/' }}"
+      copy:
+        src: tmux/tmux.conf
+        dest: "{{ path }}{{ user }}/.tmux.conf"
+        owner: "{{ user }}"
+        group: "{{ user }}"
+        mode: '0664'
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
