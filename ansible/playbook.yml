@@ -106,6 +106,16 @@
         owner: "{{ user }}"
         group: "{{ user }}"
         mode: '0664'
+    - name: Copy vscode custom profile
+      vars:
+        user: "{{ host_user if getent_passwd[host_user] else 'root' }}"
+        path: "{{ '/home/' if getent_passwd[host_user] else '/' }}"
+      copy:
+        src: vscode/vscode-enhanced-profile.code-profile
+        dest: "{{ path }}{{ user }}/vscode-enhanced-profile.code-profile"
+        owner: "{{ user }}"
+        group: "{{ user }}"
+        mode: '0664'
       
 
 
