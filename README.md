@@ -6,7 +6,7 @@
 OR
 
 1. ```cd ansible``` 
-2. ```make venv && source venv/bin/activate;
+2. ```make venv && source venv/bin/activate;```
 3. ```make install-requirements && make install-collections;```
 4. ```./execute-playbook.sh```
 

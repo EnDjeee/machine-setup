@@ -5,7 +5,7 @@
 1. Create and activate virtual env:
 
     ```bash
-    make venv
+    make venv && source venv/bin/activate;
     ```
 
 2. Install Ansible:
