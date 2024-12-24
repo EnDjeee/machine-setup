@@ -5,6 +5,7 @@ apt_packages:
   - wget
   - curl
   - git
+  - cmake
   - apt-transport-https
   - dnsutils
   - net-tools
@@ -52,7 +53,9 @@ flatpak_packages:
   - org.videolan.VLC
   - org.gnome.DejaDup
   - org.remmina.Remmina
+  - com.github.tchx84.Flatseal
 
 pip_packages:
   - ansible
+  - psutil
   - tldr

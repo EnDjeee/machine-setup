@@ -54,6 +54,24 @@
         - "{{ path }}{{ user }}/dev/miscellaneous"
         - "{{ path }}{{ user }}/dev/projects"
         - "{{ path }}{{ user }}/dev/tests"
+    - name: Get gnome-terminal default profile id
+      vars:
+        user: "{{ host_user if getent_passwd[host_user] else 'root' }}"
+      dconf:
+        key: "/org/gnome/terminal/legacy/profiles:/default"
+        state: read
+      become: true
+      become_user: "{{ user }}"
+      register: profileid
+    - name: Configure gnome-terminal to open bash shell as login shell
+      vars:
+        user: "{{ host_user if getent_passwd[host_user] else 'root' }}"
+      dconf:
+        key: "/org/gnome/terminal/legacy/profiles:/:{{ profileid.value | replace(\"'\",'') }}/login-shell"
+        state: present
+        value: "true"
+      become: true
+      become_user: "{{ user }}"
     - name: Add custom shell config in profile.d
       copy:
         src: profile/custom_configs.sh
